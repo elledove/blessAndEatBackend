@@ -1,4 +1,5 @@
 class SessionsController < ApplicationController
+    include CurrentUserConern
 
  def create
     @user = User.find_by(email: params['email']).try(:authenticate, params["password"])
