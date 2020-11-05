@@ -6,4 +6,12 @@ class Order < ApplicationRecord
       accepts_nested_attributes_for :menu_items, :order_items
 
       validates :name_for_order, presence: true
+
+
+    
+
+
+
+
+
 end
