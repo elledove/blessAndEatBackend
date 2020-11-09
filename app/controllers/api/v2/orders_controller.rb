@@ -1,14 +1,17 @@
 class Api::V2::OrdersController < ApplicationController
+    include CurrentUserConcern
 
     def index
-        orders = Order.all
+        # binding.pry
+        orders = @current_user.orders.all
         
         render json: orders
     end
 
     def create
-        binding.pry
-        order = Order.create(order_params)
+        
+        order = @current_user.orders.build(order_params)
+        # order = Order.create(order_params)
         if order.save
             render json: order
         else
@@ -17,9 +20,9 @@ class Api::V2::OrdersController < ApplicationController
     end
 
 
-    def update
-        order.update(order_params)
-    end
+    # def update
+    #     order.update(order_params)
+    # end
 
 
     def show
@@ -28,9 +31,7 @@ class Api::V2::OrdersController < ApplicationController
 
 
     private
-         def set_user
-             @user = User.find(params[:user_id])
-         end
+         
 
         # How do we add items from the menu to the current order? Here or in state?
         def add_items_to_order

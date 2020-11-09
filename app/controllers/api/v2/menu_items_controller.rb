@@ -25,4 +25,4 @@ end
         params.require(:menu_item).require(:name,:description,:price)
     end
 
-end
+# end

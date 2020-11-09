@@ -7,8 +7,8 @@ Rails.application.routes.draw do
   resources :sessions, only: [:create]
   resources :registrations, only: [:create]
   delete :logout, to: "sessions#logout"
-  get :logged_in, to: "sessions#loggin_in"
-  root to: "static#home"
+  get :logged_in, to: "sessions#logged_in"
+  # root to: "static#home"
 
   namespace :api do
     namespace :v2 do
@@ -16,7 +16,8 @@ Rails.application.routes.draw do
       resources :orders
       resources :users
       resources :menu_items
-
+    end
+  end
 
 
 
